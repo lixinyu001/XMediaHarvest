@@ -1,0 +1,53 @@
+{
+  "name": "TwitterMediaHarvest",
+  "version": "1.0.0",
+  "description": "Twitter/X media downloader for Android",
+  "main": "index.js",
+  "scripts": {
+    "start": "react-native start",
+    "android": "react-native run-android",
+    "ios": "react-native run-ios",
+    "test": "jest",
+    "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "react": "18.2.0",
+    "react-native": "0.73.0",
+    "@react-navigation/native": "^6.1.9",
+    "@react-navigation/native-stack": "^6.9.17",
+    "react-native-safe-area-context": "4.7.4",
+    "react-native-screens": "^3.27.0",
+    "react-native-webview": "^13.6.4",
+    "@react-native-async-storage/async-storage": "^1.19.3",
+    "react-native-fs": "^2.20.0",
+    "react-native-permissions": "^3.10.1",
+    "react-native-share": "^9.0.0",
+    "react-native-toast-message": "^2.2.0",
+    "fp-ts": "^2.16.9",
+    "dayjs": "^1.11.13",
+    "sanitize-filename": "^1.6.3"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.20.0",
+    "@babel/preset-env": "^7.20.0",
+    "@babel/runtime": "^7.20.0",
+    "@react-native/eslint-config": "^0.72.2",
+    "@react-native/metro-config": "^0.72.11",
+    "@react-native/typescript-config": "^0.73.1",
+    "@testing-library/react-native": "^12.4.0",
+    "@types/jest": "^29.5.0",
+    "@types/react": "^18.2.0",
+    "@types/react-test-renderer": "^18.0.0",
+    "babel-jest": "^29.5.0",
+    "eslint": "^8.51.0",
+    "jest": "^29.5.0",
+    "metro-react-native-babel-preset": "0.76.8",
+    "prettier": "^3.0.3",
+    "react-test-renderer": "18.2.0",
+    "typescript": "^5.1.6"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
