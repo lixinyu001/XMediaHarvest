@@ -1,7 +1,6 @@
 package com.xmediaharvest.app.ui.screen.home
 
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -9,6 +8,9 @@ import com.xmediaharvest.app.data.model.MediaItem
 import com.xmediaharvest.app.data.model.TweetInfo
 import com.xmediaharvest.app.data.repository.DownloadRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -17,37 +19,37 @@ class HomeViewModel @Inject constructor(
     private val downloadRepository: DownloadRepository
 ) : ViewModel() {
     
-    var uiState by mutableStateOf(HomeUiState())
-        private set
+    private val _uiState = MutableStateFlow(HomeUiState())
+    val uiState: StateFlow<HomeUiState> = _uiState.asStateFlow()
     
     fun onUrlInputChange(url: String) {
-        uiState = uiState.copy(urlInput = url)
+        _uiState.value = _uiState.value.copy(urlInput = url)
     }
     
     fun onPasteClick() {
     }
     
     fun onParseUrl() {
-        if (uiState.urlInput.isBlank()) return
+        if (_uiState.value.urlInput.isBlank()) return
         
         viewModelScope.launch {
-            uiState = uiState.copy(
+            _uiState.value = _uiState.value.copy(
                 isLoading = true,
                 error = null,
                 tweetInfo = null
             )
             
-            val result = downloadRepository.parseTweetUrl(uiState.urlInput)
+            val result = downloadRepository.parseTweetUrl(_uiState.value.urlInput)
             
             result.fold(
                 onSuccess = { tweetInfo ->
-                    uiState = uiState.copy(
+                    _uiState.value = _uiState.value.copy(
                         isLoading = false,
                         tweetInfo = tweetInfo
                     )
                 },
                 onFailure = { exception ->
-                    uiState = uiState.copy(
+                    _uiState.value = _uiState.value.copy(
                         isLoading = false,
                         error = exception.message ?: "Failed to parse tweet"
                     )
@@ -63,7 +65,7 @@ class HomeViewModel @Inject constructor(
     }
     
     fun onDownloadAll() {
-        uiState.tweetInfo?.let { tweetInfo ->
+        _uiState.value.tweetInfo?.let { tweetInfo ->
             viewModelScope.launch {
                 downloadRepository.startBatchDownload(tweetInfo.mediaItems)
             }

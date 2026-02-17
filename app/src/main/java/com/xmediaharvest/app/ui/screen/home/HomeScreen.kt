@@ -4,7 +4,13 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.*
+import androidx.compose.material.icons.filled.Home
+import androidx.compose.material.icons.filled.Settings
+import androidx.compose.material.icons.filled.PlayCircle
+import androidx.compose.material.icons.filled.Link
+import androidx.compose.material.icons.filled.ContentPaste
+import androidx.compose.material.icons.filled.Download
+import androidx.compose.material.icons.filled.DoneAll
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
