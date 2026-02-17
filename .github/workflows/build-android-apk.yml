@@ -13,6 +13,10 @@ on:
       - master
   workflow_dispatch:
 
+permissions:
+  contents: write
+  actions: read
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -55,26 +59,19 @@ jobs:
           echo "sdk.dir=$ANDROID_HOME" > local.properties
           echo "ndk.dir=$ANDROID_NDK_HOME" >> local.properties
 
-      - name: Verify Gradle wrapper
-        working-directory: ./android-app/android
-        run: |
-          echo "Checking gradlew..."
-          ls -la gradlew
-          ./gradlew --version
-
       - name: Grant execute permission for gradlew
         working-directory: ./android-app/android
         run: chmod +x gradlew
 
       - name: Build Debug APK
         working-directory: ./android-app/android
-        run: ./gradlew assembleDebug --stacktrace --info
+        run: ./gradlew assembleDebug --stacktrace
         env:
           GRADLE_OPTS: -Dorg.gradle.daemon=false -Dorg.gradle.jvmargs="-Xmx2048m -XX:MaxMetaspaceSize=512m"
 
       - name: Build Release APK (unsigned)
         working-directory: ./android-app/android
-        run: ./gradlew assembleRelease --stacktrace --info
+        run: ./gradlew assembleRelease --stacktrace
         env:
           GRADLE_OPTS: -Dorg.gradle.daemon=false -Dorg.gradle.jvmargs="-Xmx2048m -XX:MaxMetaspaceSize=512m"
 
@@ -202,7 +199,7 @@ jobs:
       - name: Build Signed Release APK
         if: ${{ secrets.KEYSTORE_FILE }}
         working-directory: ./android-app/android
-        run: ./gradlew assembleRelease --stacktrace --info
+        run: ./gradlew assembleRelease --stacktrace
         env:
           GRADLE_OPTS: -Dorg.gradle.daemon=false -Dorg.gradle.jvmargs="-Xmx2048m -XX:MaxMetaspaceSize=512m"
 
