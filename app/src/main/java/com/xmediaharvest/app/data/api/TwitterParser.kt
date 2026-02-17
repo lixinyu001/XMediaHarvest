@@ -29,7 +29,7 @@ class TwitterParser @Inject constructor(
         }
     }
     
-    private fun extractTweetId(url: String): String? {
+    internal fun extractTweetId(url: String): String? {
         val patterns = listOf(
             "twitter.com/\\w+/status/(\\d+)",
             "x.com/\\w+/status/(\\d+)",
@@ -153,7 +153,7 @@ class TwitterParser @Inject constructor(
         }
     }
     
-    private fun determineQuality(bitrate: Long): MediaQuality {
+    internal fun determineQuality(bitrate: Long): MediaQuality {
         return when {
             bitrate >= 800000 -> MediaQuality.HD
             bitrate >= 300000 -> MediaQuality.SD
