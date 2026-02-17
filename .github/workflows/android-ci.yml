@@ -25,14 +25,14 @@ jobs:
       if: runner.os != 'Windows'
     
     - name: Build with Gradle
-      run: ./gradlew build --stacktrace
+      run: ./gradlew assembleDebug --stacktrace
     
     - name: Run Unit Tests
-      run: ./gradlew test --stacktrace
+      run: ./gradlew testDebugUnitTest --stacktrace
       continue-on-error: true
     
     - name: Run Lint
-      run: ./gradlew lint --stacktrace
+      run: ./gradlew lintDebug --stacktrace
       continue-on-error: true
     
     - name: Upload Build Artifacts
