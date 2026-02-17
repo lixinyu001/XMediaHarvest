@@ -9,6 +9,9 @@ android/.gradle/
 android/build/
 android/local.properties
 
+# Gradle Wrapper (allow the JAR to be committed)
+!android/gradle/wrapper/gradle-wrapper.jar
+
 # APK files
 *.apk
 *.aab
