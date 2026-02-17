@@ -1,0 +1,36 @@
+<resources>
+    <string name="app_name">XMediaHarvest</string>
+    <string name="home">Home</string>
+    <string name="library">Library</string>
+    <string name="settings">Settings</string>
+    <string name="download">Download</string>
+    <string name="parse_tweet">Parse Tweet</string>
+    <string name="paste_twitter_url">Paste Twitter URL</string>
+    <string name="download_all">Download All</string>
+    <string name="media">Media</string>
+    <string name="no_downloads_yet">No downloads yet</string>
+    <string name="refresh">Refresh</string>
+    <string name="clear_all">Clear All</string>
+    <string name="delete">Delete</string>
+    <string name="back">Back</string>
+    <string name="download_settings">Download Settings</string>
+    <string name="max_concurrent_downloads">Max Concurrent Downloads</string>
+    <string name="download_timeout">Download Timeout</string>
+    <string name="auto_retry">Auto Retry</string>
+    <string name="storage_settings">Storage Settings</string>
+    <string name="save_location">Save Location</string>
+    <string name="organize_by_type">Organize by Type</string>
+    <string name="appearance">Appearance</string>
+    <string name="dark_mode">Dark Mode</string>
+    <string name="notifications">Notifications</string>
+    <string name="download_complete">Download Complete</string>
+    <string name="download_failed">Download Failed</string>
+    <string name="about">About</string>
+    <string name="version">Version</string>
+    <string name="privacy_policy">Privacy Policy</string>
+    <string name="user_agreement">User Agreement</string>
+    <string name="video">Video</string>
+    <string name="image">Image</string>
+    <string name="gif">GIF</string>
+    <string name="all">All</string>
+</resources>
