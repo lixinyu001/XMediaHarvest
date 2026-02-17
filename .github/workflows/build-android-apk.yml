@@ -51,7 +51,7 @@ jobs:
 
       - name: Install dependencies
         working-directory: ./android-app
-        run: npm install
+        run: npm install --legacy-peer-deps
 
       - name: Create local.properties
         working-directory: ./android-app
