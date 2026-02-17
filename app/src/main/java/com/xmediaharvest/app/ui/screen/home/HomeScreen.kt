@@ -44,7 +44,7 @@ fun HomeScreen(
                 NavigationBarItem(
                     selected = false,
                     onClick = onNavigateToLibrary,
-                    icon = { Icon(Icons.Default.VideoLibrary, contentDescription = "Library") },
+                    icon = { Icon(Icons.Default.PlayCircle, contentDescription = "Library") },
                     label = { Text("Library") }
                 )
             }
@@ -101,7 +101,7 @@ fun HomeScreen(
                     TweetInfoCard(
                         tweetInfo = uiState.tweetInfo,
                         onDownloadAll = { viewModel.onDownloadAll() },
-                        onDownloadItem = { viewModel.onDownloadItem(it) }
+                        onDownloadItem = { mediaItem -> viewModel.onDownloadItem(mediaItem) }
                     )
                 }
             }
@@ -160,7 +160,7 @@ fun TweetInfoCard(
                 onClick = onDownloadAll,
                 modifier = Modifier.fillMaxWidth()
             ) {
-                Icon(Icons.Default.DownloadDone, contentDescription = null)
+                Icon(Icons.Default.DoneAll, contentDescription = null)
                 Spacer(modifier = Modifier.width(8.dp))
                 Text("Download All")
             }

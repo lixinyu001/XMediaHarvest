@@ -6,6 +6,7 @@ import com.xmediaharvest.app.data.local.dao.DownloadHistoryDao
 import com.xmediaharvest.app.data.local.entity.DownloadHistoryEntity
 import com.xmediaharvest.app.data.model.*
 import com.xmediaharvest.app.data.api.TwitterParser
+import com.xmediaharvest.app.data.worker.DownloadWorker
 import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
