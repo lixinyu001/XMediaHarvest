@@ -25,8 +25,6 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '18'
-          cache: 'npm'
-          cache-dependency-path: android-app/package-lock.json
 
       - name: Setup Java
         uses: actions/setup-java@v4
@@ -49,13 +47,20 @@ jobs:
 
       - name: Install dependencies
         working-directory: ./android-app
-        run: npm ci
+        run: npm install
 
       - name: Create local.properties
         working-directory: ./android-app
         run: |
           echo "sdk.dir=$ANDROID_HOME" > local.properties
           echo "ndk.dir=$ANDROID_NDK_HOME" >> local.properties
+
+      - name: Verify Gradle wrapper
+        working-directory: ./android-app/android
+        run: |
+          echo "Checking gradlew..."
+          ls -la gradlew
+          ./gradlew --version
 
       - name: Grant execute permission for gradlew
         working-directory: ./android-app/android
@@ -143,8 +148,6 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '18'
-          cache: 'npm'
-          cache-dependency-path: android-app/package-lock.json
 
       - name: Setup Java
         uses: actions/setup-java@v4
@@ -167,7 +170,7 @@ jobs:
 
       - name: Install dependencies
         working-directory: ./android-app
-        run: npm ci
+        run: npm install
 
       - name: Create local.properties
         working-directory: ./android-app
