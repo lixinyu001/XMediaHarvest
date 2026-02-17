@@ -120,15 +120,3 @@ jobs:
             android-app/android/app/build/
             android-app/android/.gradle/
           retention-days: 7
-
-      - name: Create Release
-        if: startsWith(github.ref, 'refs/tags/v')
-        uses: softprops/action-gh-release@v1
-        with:
-          files: |
-            android-app/android/app/build/outputs/apk/debug/*.apk
-            android-app/android/app/build/outputs/apk/release/*.apk
-          draft: false
-          prerelease: false
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
